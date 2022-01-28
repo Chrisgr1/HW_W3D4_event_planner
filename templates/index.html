@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Event Calendar</h1> 
+    <h2>by Events4U</h2>
+
+    <form action="/events" method="post">
+        <label for="Event Name">Event's Name</label>
+        <input type="text" name="name_of_event" id="name_of_event">
+
+        <label for="event_date">Date</label>
+        <input type="date" name="event_date" id="event_date">
+        <p></p>
+
+        <label for="number_of_guests">Number Of Guests</label>
+        <input type="number" name="number_of_guests" id="number_of_guests">
+
+        <label for="room_location">Location</label>
+        <input type="text" name="room_location" id="room_location">
+
+        
+
+        <label for="description" id="description"></label>
+        <textarea name="description" id="description" cols="25" rows="2"></textarea>
+        
+        <input type="submit" value="Add Event">
+    </form>
+
+
+    {% for event in events %}  
+    <div>
+      <p>
+        On {{event.date}}, at {{event.room_location}}, {{ event.name_of_event }}: <b>{{ event.description }}</b>
+
+      </p>
+    </div>
+    {% endfor %}
+
+
+    {% endblock %}
